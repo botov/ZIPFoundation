@@ -116,7 +116,7 @@ extension Data {
     }
 
     static func compress(size: Int, bufferSize: Int, provider: Provider, consumer: Consumer) throws -> CRC32 {
-#if os(macOS) || os(iOS) || os(watchOS) || os(tvOS)
+#if os(iOS) || os(watchOS) || os(tvOS)
         return try self.process(operation: COMPRESSION_STREAM_ENCODE, size: size, bufferSize: bufferSize,
                                 provider: provider, consumer: consumer)
 #else
@@ -125,7 +125,7 @@ extension Data {
     }
 
     static func decompress(size: Int, bufferSize: Int, provider: Provider, consumer: Consumer) throws -> CRC32 {
-#if os(macOS) || os(iOS) || os(watchOS) || os(tvOS)
+#if os(iOS) || os(watchOS) || os(tvOS)
         return try self.process(operation: COMPRESSION_STREAM_DECODE, size: size, bufferSize: bufferSize,
                                 provider: provider, consumer: consumer)
 #else
@@ -136,7 +136,7 @@ extension Data {
 
 // MARK: - Apple Platforms
 
-#if os(macOS) || os(iOS) || os(watchOS) || os(tvOS)
+#if os(iOS) || os(watchOS) || os(tvOS)
 import Compression
 
 extension Data {
